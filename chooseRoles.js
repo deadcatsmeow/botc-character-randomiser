@@ -1,6 +1,6 @@
 const tbCharacters = ["Washerwoman", "Librarian", "Investigator", "Chef", "Empath", "Fortune Teller", "Undertaker", "Monk", "Ravenkeeper", "Virgin", "Slayer", "Soldier", "Mayor", "Butler", "(Drunk)*", "Recluse", "Saint", "Poisoner", "Spy", "Scarlet Woman", "Baron", "Imp"];
 const snvCharacters = ["Clockmaker", "Dreamer", "Snake Charmer", "Mathematician", "Flowergirl", "Town Crier", "Oracle", "Savant", "Seamstress", "Philosopher", "Artist", "Juggler", "Sage", "Mutant", "Sweetheart", "Barber", "Klutz", "Evil Twin", "Witch", "Cerenovus", "Pit-hag", "Fang Gu", "Vigormortis", "No Dashii", "Vortox"];
-const bmrCharacters = ["Grandmother", "Sailor", "Chambermaid", "Exorcist", "Innkeeper", "Gambler", "Gossip", "Courtier", "Professor", "Minstrel", "Yea lady", "Pacifist", "Fool", "Tinker", "Moonchild", "Goon", "Lunatic", "Godfather", "Devils Advocate", "Assassin", "Mastermind", "Zombuul", "Pukka", "Shabaloth", "Po"];
+const bmrCharacters = ["Grandmother", "Sailor", "Chambermaid", "Exorcist", "Innkeeper", "Gambler", "Gossip", "Courtier", "Professor", "Minstrel", "Tea Lady", "Pacifist", "Fool", "Tinker", "Moonchild", "Goon", "Lunatic", "Godfather", "Devils Advocate", "Assassin", "Mastermind", "Zombuul", "Pukka", "Shabaloth", "Po"];
 
 const tbScript = {id:"tb", name: "Trouble Brewing", characters: tbCharacters, townsfolk: 13, outsiders: 4, minions: 4, demon: 1};
 const snvScript = {id:"snv", name: "Sects and Violets", characters: snvCharacters, townsfolk: 13, outsiders: 4, minions: 4, demon: 4};
