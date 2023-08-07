@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="chooseRoles.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Blood on the Clocktower Role Randomiser</h1>
+    <p>Randomly select characters for each of the base 3 scripts, for 5-15 players.</p>
+    Choose a script:
+    <form id="script_selection">
+        <select name="script_selection" class="script">
+            <option value="tb" selected="selected">Trouble Brewing</option>
+            <option value="snv">Sects and Violets</option>
+            <option value="bmr">Bad Moon Rising</option>
+        </select>
+        <select name="player_count" class="players">
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7" selected="selected">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+        </select>
+        <input class="submit" type="submit" value="Generate roles">
+    </form>
+    
+    <div id="result">
+        <h2 id="script" class="content"></h2>
+        <div id="townsfolk" class="content"></div>
+        <div id="outsiders" class="content"></div>
+        <div id="minions" class="content"></div>
+        <div id="demon" class="content"></div>
+    </div>
+</body>
+</html>
