@@ -5,7 +5,6 @@ html {
         Using em/rem means that this scales depending on the users' browser defaults
     */
     font-size: 62.5%;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -24,9 +23,14 @@ h3 { font-size: var(--size3); }
 h4 { font-size: var(--size4); }
 h5 { font-size: var(--size5); }
 h6 { font-size: var(--size6); }
+.smaller { font-size: var(--size5); }
 
-h3 {
-    margin-bottom: 5px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3, p {
+    margin: 5px 0px 5px 0px;
 }
 
 #townsfolk, .good {
@@ -42,9 +46,10 @@ h3 {
     color: red;
 }
 
-select, .submit {
+select, input {
     border: none;
     padding: 10px;
+    margin: 5px;
     font-size: var(--size4);
 }
 

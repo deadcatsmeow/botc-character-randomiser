@@ -7,7 +7,7 @@ const snvScript = {id:"snv", name: "Sects and Violets", characters: snvCharacter
 const bmrScript = {id:"bmr", name: "Bad Moon Rising", characters: bmrCharacters, travellers: 5, townsfolk: 13, outsiders: 4, minions: 4, demon: 4};
 const players = [,,,,,[3,0,1,1],[3,1,1,1],[5,0,1,1],[5,1,1,1],[5,2,1,1],[7,0,2,1],[7,1,2,1],[7,2,2,1],[9,0,3,1],[9,1,3,1],[9,2,3,1]];
 
-var selectedScript ="tb";
+var selectedScript = "tb";
 var playerCount = 7;
 var t;
 var o;
@@ -63,7 +63,7 @@ $(document).ready(function() {
         selectedDemon.forEach(printDemon);
         
         if (showTravellers === "true") {
-            $("div#travellers").append('<h3><span class="good">Trave</span><span class="evil">llers</h3><p>Alignments are a suggestion only, based on 2:1 good/evil ratio</p>');
+            $("div#travellers").append('<h3><span class="good">Trave</span><span class="evil">llers</h3><p class="smaller">*Alignments are a suggestion only, based on 2:1 good/evil ratio</p>');
             selectedTravellers.forEach(printTravellers);
         }
     });
