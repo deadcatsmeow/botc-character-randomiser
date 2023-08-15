@@ -63,7 +63,7 @@ $(document).ready(function() {
         selectedDemon.forEach(printDemon);
         
         if (showTravellers === "true") {
-            $("div#travellers").append('<h3><span class="good">Trave</span><span class="evil">llers</h3><p class="smaller">*Alignments are a suggestion only, based on 2:1 good/evil ratio</p>');
+            $("div#travellers").append('<h3><span class="good">Trave</span><span class="evil">llers</h3><p class="smaller">*Alignments are a suggestion only (based on 2:1 good/evil ratio)</p>');
             selectedTravellers.forEach(printTravellers);
         }
     });
@@ -89,7 +89,12 @@ function selectCharacters(script, playerCount) {
 
     minions.splice(0, script.minions - m);
     modifySetup(minions, "Baron", -2, 2);
-    modifySetup(minions, "Godfather", -1, 1);
+    gfMod = modifySetup(minions, "Godfather", -1, 1);
+    
+    if (minions.includes("Godfather")) {
+        gfIndex = minions.indexOf("Godfather");
+        minions[gfIndex] = gfMod;
+    }
     
     outsiders.splice(0, script.outsiders - o);
     modifySetup(outsiders, "(Drunk)*", 1, 0);
@@ -115,9 +120,13 @@ function modifySetup(array, character, tMod, oMod) {
             tMod = Math.abs(tMod);
             oMod = -Math.abs(oMod);
             if (oMod < 0 && o == 0) return;
+            gfMod = "Godfather (-1)";
+        } else {
+            gfMod = "Godfather (+1)"
         }
         t += tMod;
         o += oMod;
+        return gfMod;
     }
 }
 
