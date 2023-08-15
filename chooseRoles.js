@@ -1,10 +1,10 @@
-const tbCharacters = ["Washerwoman", "Librarian", "Investigator", "Chef", "Empath", "Fortune Teller", "Undertaker", "Monk", "Ravenkeeper", "Virgin", "Slayer", "Soldier", "Mayor", "Butler", "(Drunk)*", "Recluse", "Saint", "Poisoner", "Spy", "Scarlet Woman", "Baron", "Imp"];
-const snvCharacters = ["Clockmaker", "Dreamer", "Snake Charmer", "Mathematician", "Flowergirl", "Town Crier", "Oracle", "Savant", "Seamstress", "Philosopher", "Artist", "Juggler", "Sage", "Mutant", "Sweetheart", "Barber", "Klutz", "Evil Twin", "Witch", "Cerenovus", "Pit-hag", "Fang Gu", "Vigormortis", "No Dashii", "Vortox"];
-const bmrCharacters = ["Grandmother", "Sailor", "Chambermaid", "Exorcist", "Innkeeper", "Gambler", "Gossip", "Courtier", "Professor", "Minstrel", "Tea Lady", "Pacifist", "Fool", "Tinker", "Moonchild", "Goon", "Lunatic", "Godfather", "Devils Advocate", "Assassin", "Mastermind", "Zombuul", "Pukka", "Shabaloth", "Po"];
+const tbCharacters = ["Scapegoat", "Gunslinger", "Beggar","Bureaucrat","Thief", "Washerwoman", "Librarian", "Investigator", "Chef", "Empath", "Fortune Teller", "Undertaker", "Monk", "Ravenkeeper", "Virgin", "Slayer", "Soldier", "Mayor", "Butler", "(Drunk)*", "Recluse", "Saint", "Poisoner", "Spy", "Scarlet Woman", "Baron", "Imp"];
+const snvCharacters = ["Butcher","Bone Collector", "Harlot", "Barista", "Deviant", "Clockmaker", "Dreamer", "Snake Charmer", "Mathematician", "Flowergirl", "Town Crier", "Oracle", "Savant", "Seamstress", "Philosopher", "Artist", "Juggler", "Sage", "Mutant", "Sweetheart", "Barber", "Klutz", "Evil Twin", "Witch", "Cerenovus", "Pit-hag", "Fang Gu", "Vigormortis", "No Dashii", "Vortox"];
+const bmrCharacters = ["Apprentice", "Matron", "Voudon", "Judge", "Bishop", "Grandmother", "Sailor", "Chambermaid", "Exorcist", "Innkeeper", "Gambler", "Gossip", "Courtier", "Professor", "Minstrel", "Tea Lady", "Pacifist", "Fool", "Tinker", "Moonchild", "Goon", "Lunatic", "Godfather", "Devils Advocate", "Assassin", "Mastermind", "Zombuul", "Pukka", "Shabaloth", "Po"];
 
-const tbScript = {id:"tb", name: "Trouble Brewing", characters: tbCharacters, townsfolk: 13, outsiders: 4, minions: 4, demon: 1};
-const snvScript = {id:"snv", name: "Sects and Violets", characters: snvCharacters, townsfolk: 13, outsiders: 4, minions: 4, demon: 4};
-const bmrScript = {id:"bmr", name: "Bad Moon Rising", characters: bmrCharacters, townsfolk: 13, outsiders: 4, minions: 4, demon: 4};
+const tbScript = {id:"tb", name: "Trouble Brewing", characters: tbCharacters, travellers: 5, townsfolk: 13, outsiders: 4, minions: 4, demon: 1};
+const snvScript = {id:"snv", name: "Sects and Violets", characters: snvCharacters, travellers: 5, townsfolk: 13, outsiders: 4, minions: 4, demon: 4};
+const bmrScript = {id:"bmr", name: "Bad Moon Rising", characters: bmrCharacters, travellers: 5, townsfolk: 13, outsiders: 4, minions: 4, demon: 4};
 const players = [,,,,,[3,0,1,1],[3,1,1,1],[5,0,1,1],[5,1,1,1],[5,2,1,1],[7,0,2,1],[7,1,2,1],[7,2,2,1],[9,0,3,1],[9,1,3,1],[9,2,3,1]];
 
 var selectedScript ="tb";
@@ -33,18 +33,39 @@ $(document).ready(function() {
                 break;
             case "bmr":
                 script = bmrScript;
-                break
+                break;
             default:
                 script = tbScript;
         }
+        showTravellers = $('input[name="showTravellers"]:checked').val();
 
-        grim = selectCharacters(script, playerCount); 
+        grim = selectCharacters(script, playerCount);
+        selectedTownsfolk = grim[0].sort();
+        selectedOutsiders = grim[1].sort();
+        selectedMinions = grim[2].sort();
+        selectedDemon = grim[3].sort();
+        selectedTravellers = grim[4];
 
         $("h2#script").text(script.name);
-        selectedTownsfolk = grim[0].sort(); $("div#townsfolk").append("<h3>Townsfolk</h3>"); selectedTownsfolk.forEach(printTownsfolk);
-        selectedOutsiders = grim[1].sort(); if(selectedOutsiders.length > 0) $("div#outsiders").append("<h3>Outsiders</h3>"); selectedOutsiders.forEach(printOutsiders);
-        selectedMinions = grim[2].sort(); $("div#minions").append("<h3>Minions</h3>"); selectedMinions.forEach(printMinions);
-        selectedDemon = grim[3].sort(); $("div#demon").append("<h3>Demon</h3>"); selectedDemon.forEach(printDemon);
+
+        $("div#townsfolk").append("<h3>Townsfolk</h3>");
+        selectedTownsfolk.forEach(printTownsfolk);
+        
+        if(selectedOutsiders.length > 0) { 
+            $("div#outsiders").append("<h3>Outsiders</h3>");
+            selectedOutsiders.forEach(printOutsiders);
+        }
+        
+        $("div#minions").append("<h3>Minions</h3>");
+        selectedMinions.forEach(printMinions);
+        
+        $("div#demon").append("<h3>Demon</h3>");
+        selectedDemon.forEach(printDemon);
+        
+        if (showTravellers === "true") {
+            $("div#travellers").append('<h3><span class="good">Trave</span><span class="evil">llers</h3><p>Alignments are a suggestion only, based on 2:1 good/evil ratio</p>');
+            selectedTravellers.forEach(printTravellers);
+        }
     });
 });
 
@@ -56,10 +77,11 @@ function selectCharacters(script, playerCount) {
     d = tomd[3];
 
     allCharacters = script.characters;
-    demon = allCharacters.slice(21, 21 + script.demon); shuffleArray(demon);
-    minions = allCharacters.slice(17, 17 + script.minions); shuffleArray(minions);
-    outsiders = allCharacters.slice(13, 13 + script.outsiders); shuffleArray(outsiders);
-    townsfolk = allCharacters.slice(0, script.townsfolk); shuffleArray(townsfolk);
+    demon = allCharacters.slice(26, 26 + script.demon); shuffleArray(demon);
+    minions = allCharacters.slice(22, 22 + script.minions); shuffleArray(minions);
+    outsiders = allCharacters.slice(18, 18 + script.outsiders); shuffleArray(outsiders);
+    townsfolk = allCharacters.slice(5, 5 + script.townsfolk); shuffleArray(townsfolk);
+    travellers = allCharacters.slice(0, script.travellers); shuffleArray(travellers);
     
     demon.splice(0, script.demon - d); 
     modifySetup(demon, "Fang Gu", -1, 1);
@@ -74,7 +96,7 @@ function selectCharacters(script, playerCount) {
     
     townsfolk.splice(0, script.townsfolk - t);
 
-    return [townsfolk, outsiders, minions, demon];
+    return [townsfolk, outsiders, minions, demon, travellers];
 }
 
 function shuffleArray(array) {
@@ -110,4 +132,11 @@ function printMinions(characters) {
 }
 function printDemon(characters) {
     $("div#demon").append(characters + "<br>");
+}
+function printTravellers(characters) {
+    alignment = "good";
+    if (Math.random() <= (1/3)) {
+        alignment = "evil";
+    }
+    $("div#travellers").append('<span class="' + alignment + '">' + characters + '</span><br>');
 }

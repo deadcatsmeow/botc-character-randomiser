@@ -5,6 +5,7 @@ html {
         Using em/rem means that this scales depending on the users' browser defaults
     */
     font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 :root {
@@ -28,7 +29,7 @@ h3 {
     margin-bottom: 5px;
 }
 
-#townsfolk {
+#townsfolk, .good {
     color: blue;
 }
 #outsiders {
@@ -37,7 +38,7 @@ h3 {
 #minions {
     color: orangered;
 }
-#demon {
+#demon, .evil {
     color: red;
 }
 

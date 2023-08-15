@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="chooseRoles.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -8,13 +9,14 @@
 <body>
     <h1>Blood on the Clocktower Role Randomiser</h1>
     <p>Randomly select characters for each of the base 3 scripts, for 5-15 players.</p>
-    Choose a script:
     <form id="script_selection">
+        <label for="script_selection">Script: </label>
         <select name="script_selection" class="script">
             <option value="tb" selected="selected">Trouble Brewing</option>
             <option value="snv">Sects and Violets</option>
             <option value="bmr">Bad Moon Rising</option>
-        </select>
+        </select><br>
+        <label for="player_count">Number of players: </label>
         <select name="player_count" class="players">
             <option value="5">5</option>
             <option value="6">6</option>
@@ -28,6 +30,10 @@
             <option value="14">14</option>
             <option value="15">15</option>
         </select>
+        <p>Show Travellers?</p>
+        <input name="showTravellers" type="radio" value=true checked /><label for="true">Yes</label>
+        <input name="showTravellers" type="radio" value=false /><label for="false">No</label>
+        <br>
         <input class="submit" type="submit" value="Generate roles">
     </form>
     
@@ -37,6 +43,7 @@
         <div id="outsiders" class="content"></div>
         <div id="minions" class="content"></div>
         <div id="demon" class="content"></div>
+        <div id="travellers" class="content"></div>
     </div>
 </body>
 </html>
