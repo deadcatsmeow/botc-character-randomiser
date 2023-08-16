@@ -1,9 +1,4 @@
-/** Fonts **/
 html {
-    /* Set root font size to 62.5% the size of the browser default to make font-size calculations based on rem easier 
-        e.g. 16px (default for most browsers) = 10px at 62.5%, making 1.6rem = 16px
-        Using em/rem means that this scales depending on the users' browser defaults
-    */
     font-size: 62.5%;
 }
 
@@ -16,13 +11,10 @@ html {
     --size6: 1.2rem;
 }
 
-body, p { font-size: var(--size4); }
+body, p, .submit { font-size: var(--size4); }
 h1 { font-size: var(--size1); }
 h2 { font-size: var(--size2); }
 h3 { font-size: var(--size3); }
-h4 { font-size: var(--size4); }
-h5 { font-size: var(--size5); }
-h6 { font-size: var(--size6); }
 .smaller { font-size: var(--size5); }
 
 body {
@@ -59,6 +51,5 @@ select, .radio {
     border: none;
     padding: 10px;
     margin-top: 10px;
-    font-size: var(--size4);
     font-weight: bold;
 }
