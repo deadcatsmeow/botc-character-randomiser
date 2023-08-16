@@ -119,8 +119,8 @@ function modifySetup(array, character, tMod, oMod) {
         if (character == "Godfather" && Math.random() <= 0.25) {
             tMod = Math.abs(tMod);
             oMod = -Math.abs(oMod);
-            if (oMod < 0 && o == 0) return;
             gfMod = "Godfather (-1)";
+            if (oMod < 0 && o == 0) return gfMod;
         } else {
             gfMod = "Godfather (+1)"
         }
