@@ -7,14 +7,17 @@ const snvScript = {id:"snv", name: "Sects and Violets", characters: snvCharacter
 const bmrScript = {id:"bmr", name: "Bad Moon Rising", characters: bmrCharacters, travellers: 5, townsfolk: 13, outsiders: 4, minions: 4, demon: 4};
 const players = [,,,,,[3,0,1,1],[3,1,1,1],[5,0,1,1],[5,1,1,1],[5,2,1,1],[7,0,2,1],[7,1,2,1],[7,2,2,1],[9,0,3,1],[9,1,3,1],[9,2,3,1]];
 
-var selectedScript = "tb";
-var playerCount = 7;
+var selectedScript;
+var playerCount;
 var t;
 var o;
 var m;
 var d;
 
 $(document).ready(function() {
+    selectedScript = $("select.script > option:selected").val();
+    playerCount = $("select.players > option:selected").val();
+
     $("select.script").change(function(){
         selectedScript = $(this).children("option:selected").val();
     });

@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Blood on the Clocktower character randomiser</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Blood on the Clocktower character randomiser for base 3 scripts">
+    <meta name="keywords" content="Blood on the Clocktower">
+    <meta name="author" content="Yoss">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="chooseRoles.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Blood on the Clocktower Role Randomiser</h1>
-    <p>Randomly select characters for each of the base 3 scripts, for 5-15 players.</p>
+    <h1>Blood on the Clocktower character randomiser</h1>
+    <p>Randomly select characters for each of the base 3 scripts.</p>
     <form id="script_selection">
         <label for="script_selection">Script: </label>
         <select name="script_selection" class="script">
@@ -31,10 +37,10 @@
             <option value="15">15</option>
         </select>
         <p>Show Travellers?</p>
-        <input name="showTravellers" type="radio" value=true checked /><label for="true">Yes</label>
-        <input name="showTravellers" type="radio" value=false /><label for="false">No</label>
+        <input class="radio" name="showTravellers" type="radio" value=true /><label for="true">Yes</label>
+        <input calls="radio" name="showTravellers" type="radio" value=false checked /><label for="false">No</label>
         <br>
-        <input class="submit" type="submit" value="Generate roles">
+        <input class="submit" type="submit" value="Select characters">
     </form>
     
     <div id="result">
