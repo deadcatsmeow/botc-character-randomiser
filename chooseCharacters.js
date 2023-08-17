@@ -119,13 +119,13 @@ function shuffleArray(array) {
 function modifySetup(array, character, tMod, oMod) {   
     if (array.includes(character)) {
         if (character == "Vigormortis" && o == 0) return;
-        if ((character == "Godfather" && (Math.random() > 0.2 || o == 0))) {
-            gfMod = "Godfather (+1)"
-        }
-        else {
+        if ((character == "Godfather" && Math.random() <= 0.2 && o != 0)) {
             tMod = Math.abs(tMod);
             oMod = -Math.abs(oMod);
             gfMod = "Godfather (-1)";
+        }
+        else if (character == "Godfather") {
+            gfMod = "Godfather (+1)"
         }
         t += tMod;
         o += oMod;
